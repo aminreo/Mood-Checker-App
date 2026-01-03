@@ -4,7 +4,7 @@
 
 
 const state = {
-    colorResult: '',
+    colorResult: null,
     view: 'pick', //pick results
     hasTriedNext: false
 }
