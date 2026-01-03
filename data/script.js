@@ -3,7 +3,9 @@
 
 
 
-let colorResult='';
+const state = {
+    colorResult:''
+}
 const stepOneResultsText = document.getElementById('results-step1');
 
 const innerTitle = document.getElementById('inner-title');
@@ -24,14 +26,19 @@ function handleReset() {
     stepOneResultsText.innerHTML= '';
     nextBt.innerHTML = 'Next';
     innerTitle.innerHTML = 'Pick a color that matches your current mood:'
-    document.body.style.backgroundImage =`linear-gradient(to left, #2a2a96, #a21f8d, #e53c73)`;
+    document.body.style.backgroundImage =`var(--default-bg)`;
 }
 function handleStepOneResults() {
+    if (state.colorResult== ''){
+        innerTitle.innerHTML = 'Pick a color below:';
+        return;
+    }
     stepOneResult.style.display = 'none';
-    stepOneResultsText.innerHTML= `<h2>${colorResult}</h2>`;
+    stepOneResultsText.innerHTML= `<h2>${state.colorResult}</h2>`;
 
     nextBt.innerHTML = 'Redo';
     innerTitle.innerHTML = 'Your likely mood:'
+    state.colorResult='';
 
 }
 const boxes = document.querySelectorAll('.color-box');
@@ -40,10 +47,10 @@ boxes.forEach(box => {
     box.addEventListener('click', () => {
         console.log('ok');
         // box.style.background='#fbf8ff';
-        document.body.style.backgroundImage = `linear-gradient(${box.style.background} 0 0)`;
+        document.body.style.background = `${box.style.background}`;
         boxes.forEach(b => b.style.transform = `none`)
         box.style.transform = `scale(1.1)`;
-        colorResult= box.getAttribute('data-mood');
+        state.colorResult= box.getAttribute('data-mood');
 
     });
 });

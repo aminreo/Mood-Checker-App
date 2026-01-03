@@ -1,9 +1,10 @@
 :root{
     --color-box-size: 70px;
+    --default-bg:  linear-gradient(to left, #2a2a96, #a21f8d, #e53c73);
 }
 body {
     /* background-color: #2a2a96; */
-    background-image: linear-gradient(to left, #2a2a96, #a21f8d, #e53c73);
+    background-image:var(--default-bg);
     /* color: aqua; */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
