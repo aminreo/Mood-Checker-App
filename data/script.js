@@ -48,8 +48,8 @@ boxes.forEach(box => {
         console.log('ok');
         // box.style.background='#fbf8ff';
         document.body.style.background = `${box.style.background}`;
-        boxes.forEach(b => b.style.transform = `none`)
-        box.style.transform = `scale(1.1)`;
+        boxes.forEach(b => b.classList.remove('selected'))
+        box.classList.add('selected');
         state.colorResult= box.getAttribute('data-mood');
 
     });
