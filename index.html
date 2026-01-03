@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="data/style.css">
+    <title>Mood Checker App</title>
+</head>
+
+<body>
+
+    <div class="main-container">
+        <h1>Mood Checker App</h1>
+        <hr class="part1-line">
+        <h3 id="inner-title">Pick a color that matches your current mood:</h3>
+        <div class="mood-colors" id="mood-colors">
+            <button class="color-box" style="background: #E63946;" data-mood="Energy/Passion"></button>
+            <button class="color-box" style="background: #FFB703;" data-mood="Optimism/Focus"></button>
+            <button class="color-box" style="background: #2A9D8F;" data-mood="Growth/Healing"></button>
+
+            <button class="color-box" style="background: #4EA8DE;" data-mood="Calm/Clarity"></button>
+            <button class="color-box" style="background: #9B5DE5;" data-mood="Creative/Introspective"></button>
+            <button class="color-box" style="background: #FB8500;" data-mood="Social/Warmth"></button>
+
+            <button class="color-box" style="background: #6D6D6D;" data-mood="Neutral/Quiet"></button>
+            <button class="color-box" style="background: #1B1B1B;" data-mood="Heavy/Deep"></button>
+            <button class="color-box" style="background: #F1FAEE;" data-mood="Fresh/New"></button>
+            <br>
+
+        </div>
+        <div class="results-step1" id="results-step1"></div>
+        <hr>
+        <div class="footer"> <button class="next" id="step1-next-bt">Next</button>
+        </div>
+        <script src="data/script.js"></script>
+</body>
+
+</html>

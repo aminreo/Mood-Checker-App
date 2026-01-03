@@ -1,0 +1,93 @@
+:root{
+    --color-box-size: 70px;
+}
+body {
+    /* background-color: #2a2a96; */
+    background-image: linear-gradient(to left, #2a2a96, #a21f8d, #e53c73);
+    /* color: aqua; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.main-container {
+    
+    width: min(90vw, 300px);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fcf7ff;
+    color: black;
+    border-radius: 10px;
+    padding: 20px;
+    /* margin: 5px; */
+    box-shadow: 1px 5px 10px #007e62;
+    /* max-width: 400px; */
+}
+
+.next {
+    background-color: #2a2a96;
+    color: #d9f2f7;
+    border-color: #d9f2f7;
+    font-size: large;
+    padding: 10px;
+    width: 25%;
+
+
+}
+
+button:hover{
+        /* background-color: #968ab6; */
+        transform: scale(1.1);
+}
+
+
+button {
+    
+    cursor: pointer;
+    box-shadow: 0 5px 5px #a21f8d;
+    border-radius: 15px;
+    border-width: 0;
+
+}
+
+.color-box,.color-bt {
+    width: var(--color-box-size);
+    height: var(--color-box-size);
+    margin: 5px;
+
+}
+
+.mood-colors {
+  
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /* margin: 10px; */
+   /* margin: 0;   */
+   justify-content: center;  
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* .part1-line{
+    background-image: linear-gradient(to left, black ,red ,yellow);
+} */
+
+/* 
+#color-bt-1{
+    background-color: red;
+} */
+
+hr{
+    color: #fbf8ff;
+    margin: 20px 0;
+}
+
+.results-step1{
+    align-content: center;
+    text-align: center;
+}
