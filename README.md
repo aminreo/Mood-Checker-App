@@ -6,4 +6,4 @@ mood check-ins app to increase self reflection in an easy and intuitive way
 * `redo` function for resetting
 
 ## How to use
-visit the page for this repo
+visit the [page](https://aminreo.github.io/Mood-Checker-App/index.html) for this repo
