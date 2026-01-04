@@ -3,6 +3,7 @@
     --default-bg:  linear-gradient(to left, #2a2a96, #a21f8d, #e53c73);
 }
 body {
+
     /* background-color: #2a2a96; */
     background-image:var(--default-bg);
     /* color: aqua; */
@@ -11,7 +12,7 @@ body {
 }
 
 .main-container {
-    
+
     width: min(90vw, 300px);
     margin: 0;
     position: absolute;
@@ -44,7 +45,8 @@ button:hover, button.selected{
 }
 
 
-button {
+button {    
+
     
     cursor: pointer;
     box-shadow: 0 5px 5px #a21f8d;
@@ -53,7 +55,7 @@ button {
 
 }
 
-.color-box,.color-bt {
+.color-box,.color-bt,.location-box {
     width: var(--color-box-size);
     height: var(--color-box-size);
     margin: 5px;
@@ -91,4 +93,23 @@ hr{
 .results-step1{
     align-content: center;
     text-align: center;
+}
+
+.location-boxes{
+    display: none;
+    /* padding: 10px; */
+    /* margin: 20px; */
+    transform: scale(1.2);
+    margin: 10px;
+   /* margin: 0;   */
+   justify-content: center;  
+   grid-template-columns: auto auto auto auto;
+}
+
+.location-box{
+    /* padding: 10px; */
+    margin: 10px;
+    /* background: url('/data/img/chest.png') ; */
+    background-size: cover;
+
 }
