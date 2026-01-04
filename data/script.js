@@ -71,7 +71,7 @@ boxes.forEach(box => {
 
 locations.forEach(box => {
     const tmpLocation = box.getAttribute('data-location')
-    box.style.backgroundImage = `url('/data/img/${tmpLocation.toLowerCase()}.png')`;
+    box.style.backgroundImage = `url('data/img/${tmpLocation.toLowerCase()}.png')`;
 
     box.addEventListener('click', () => {
         state.locationResult = tmpLocation;
