@@ -1,21 +1,22 @@
 import './App.css'
 import { useState } from 'react';
 
-function renderAppWrapper() {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [color, setColor] = useState('#60A5FA');
+const DEFAULT_BG = 'linear-gradient(to left, #2a2a96, #a21f8d, #e53c73)';
 
+
+function renderAppWrapper(color, setColor) {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [hastTriedToProceedWithoutColor, setHasTriedToProceedWithoutColor] = useState(false);
 
   const nextStep = () => {
     setCurrentStep((prevStep) => prevStep < 4 ? prevStep + 1 : 0);
   };
 
   return (
-    <div className="app-wrapper" style={{ backgroundColor: color + '22' }}>
+    <div className="app-wrapper-contents" style={{ backgroundColor: 'white' }}>
       {renderTitle(currentStep)}
       <hr />
-      {renderContent(currentStep)}
-
+      {renderContent(currentStep, setColor, color)}
       <hr />
       {renderButton(currentStep, nextStep)}
     </div>
@@ -42,38 +43,82 @@ function renderButton(step, nextStep) {
         return 'Next';
     }
   }
-  return (<button onClick={nextStep}>
+  return (<button onClick={handleButtonClick} style={{ padding: '15px', marginTop: '5px', fontSize: '16px', cursor: 'pointer' }}>
     {buttonText}
   </button>);
+
+  function handleButtonClick() {
+
+    nextStep();
+  }
 }
 
-function renderContent(step) {
+function renderContent(step, setColor, color) {
   switch (step) {
     case 0:
-      return renderWelcome();
+      return renderWelcome(setColor);
     case 1:
-      return renderStepOne();
+      return renderStepOne(setColor);
     case 2:
       return renderStepTwo();
     case 3:
       return renderStepThree();
     case 4:
-      return renderResults();
+      return renderResults(color);
     default:
       return <div className="inner-content">Invalid Step</div>;
   }
 }
 
-function renderWelcome() {
+function renderWelcome(setColor) {
+  // setColor(null);
+  // document.getRootNode().documentElement.style.backgroundImage = 'linear-gradient(to left, #2a2a96, #a21f8d, #e53c73)';
+  // setColor(`linear-gradient(to left, #2a2a96, #a21f8d, #e53c73)`); //makes app crush for some reason
   return (
     <div className="inner-content">
-      Welcome to Mood Checker App!
+      Click start to begin!
     </div>);
 }
 
-function renderStepOne() {
-  return (<div className="inner-content">
-    one</div>);
+function renderStepOne(setColor) {
+  const errorMessage = 'Selecting a color is required to proceed';
+
+  const COLORS = [
+    { name: 'Energy/Passion', hex: '#E63946' },
+    { name: 'Optimism/Focus', hex: '#FFB703' },
+    { name: 'Growth/Healing', hex: '#2A9D8F' },
+    { name: 'Calm/Clarity', hex: '#4EA8DE' },
+    { name: 'Creative/Introspective', hex: '#9B5DE5' },
+    { name: 'Social/Warmth', hex: '#FB8500' },
+    { name: 'Neutral/Quiet', hex: '#6D6D6D' },
+    { name: 'Heavy/Deep', hex: '#1B1B1B' },
+    { name: 'Fresh/New', hex: '#F1FAEE' },
+  ]
+
+  return (
+    <div className="inner-content">
+      <p>Select a color that represents your current mood:
+      </p>
+      {/* errorMessage only shown if user tries to proceed without selecting a color */}
+      <div className="step-one-content">
+
+        {COLORS.map((color) => (
+          <button
+            className='mood-color-button'
+            key={color.hex}
+            id={`${color.name}`}
+            onClick={() => handleChosenColor(color.hex, setColor)}
+            style={{ backgroundColor: color.hex }}
+          >
+          </button>
+        ))}
+      </div></div>);
+}
+
+function handleChosenColor(hexColor, setColor) {
+  // document.getRootNode().documentElement.style.backgroundImage = `linear-gradient(to left, ${hexColor}, ${hexColor}AA, ${hexColor}FF)`;
+  const NewBG = `linear-gradient(to left, ${hexColor}, ${hexColor}AA, ${hexColor}FF)`;
+  setColor(NewBG);
 }
 function renderStepTwo() {
   return (<div className="inner-content">two</div>);
@@ -81,12 +126,18 @@ function renderStepTwo() {
 function renderStepThree() {
   return (<div className="inner-content">three</div>);
 }
-function renderResults() {
-  return (<div className="inner-content">results</div>);
+function renderResults(color) {
+  return (<div className="inner-content">
+    Selected color: {color}
+  </div>);
 }
 
 function App() {
-  return (renderAppWrapper());
+  const [color, setColor] = useState(DEFAULT_BG);
+
+  return (<div className="app-wrapper" style={{ backgroundImage: color }}>
+    {renderAppWrapper(color, setColor)}
+  </div>);
 }
 
 export default App
