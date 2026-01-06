@@ -122,3 +122,9 @@ hr {
     from { opacity: 1; }
     to { opacity: 0; }
 }
+
+/* selected mood buttons */
+.selected{ 
+    box-shadow: 0 0 10px 5px #646cff;
+    transform: scale(1.2);
+}
